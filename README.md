@@ -5,6 +5,7 @@ A vue-ssr based scaffolding.
 Scaffolding mainly integrates the following packages:
 
 * vue 2.x
+* koa2
 * vue-router
 * vuex
 * axios
