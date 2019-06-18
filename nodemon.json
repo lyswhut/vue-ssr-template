@@ -1,0 +1,19 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    ".eslintrc",
+    "client",
+    "public",
+    "build-server",
+    "logs",
+    "server/server.template.pug"
+  ],
+  "verbose": false,
+  "env": {
+    "NODE_ENV": "development",
+    "DEBUG_API": true
+  },
+  "ext": "js,json,pug"
+}
