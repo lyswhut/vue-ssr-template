@@ -52,7 +52,7 @@ module.exports = (app, templatePath, cb) => {
     devMiddleware: {
       publicPath: clientConfig.output.publicPath,
       index: false,
-      stats: 'minimal',
+      stats: 'none',
     },
     hotClient: {
       logLevel: 'warn',
@@ -61,8 +61,8 @@ module.exports = (app, templatePath, cb) => {
     app.use(middleware)
     clientCompiler.plugin('done', stats => {
       stats = stats.toJson()
-      stats.errors.forEach(err => console.error(err))
-      stats.warnings.forEach(err => console.warn(err))
+      // stats.errors.forEach(err => console.error(err))
+      // stats.warnings.forEach(err => console.warn(err))
       if (stats.errors.length) return
       clientManifest = JSON.parse(readFile(
         middleware.devMiddleware.fileSystem,
@@ -81,8 +81,8 @@ module.exports = (app, templatePath, cb) => {
   serverCompiler.watch({}, (err, stats) => {
     if (err) throw err
     stats = stats.toJson()
-    stats.errors.forEach(err => console.log(err))
-    stats.warnings.forEach(warn => console.log(warn))
+    // stats.errors.forEach(err => console.log(err))
+    // stats.warnings.forEach(warn => console.log(warn))
     if (stats.errors.length) return
 
     // console.log(bundlePath)

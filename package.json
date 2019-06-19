@@ -12,8 +12,8 @@
     "dev": "nodemon server/server.js",
     "devt": "cross-env NODE_ENV=production RUN_MODE=test node server/server.js",
     "start": "cross-env NODE_ENV=production node server/server.js",
-    "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
-    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/"
+    "lint": "eslint -f ./node_modules/eslint-formatter-friendly --ext .js --ext .jsx --ext .vue client/",
+    "lint-fix": "eslint -f ./node_modules/eslint-formatter-friendly --fix --ext .js --ext .jsx --ext .vue client/"
   },
   "browserslist": [
     ">= 1%",
