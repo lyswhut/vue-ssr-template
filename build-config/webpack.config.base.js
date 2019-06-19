@@ -22,17 +22,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(vue|js)$/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: require('eslint-formatter-friendly'),
-          },
-        },
-        exclude: /node_modules/,
-        enforce: 'pre',
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig,
@@ -74,10 +63,10 @@ module.exports = {
     maxEntrypointSize: 300000,
     hints: false,
   },
-  plugins: isDev ? [
+  plugins: [
     new VueLoaderPlugin(),
-    new FriendlyErrorsPlugin(),
-  ] : [
-    new VueLoaderPlugin(),
+    new FriendlyErrorsPlugin({
+      clearConsole: false,
+    }),
   ],
 }

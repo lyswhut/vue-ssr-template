@@ -45,14 +45,14 @@ module.exports = (app, templatePath, cb) => {
   // Client compiler
   clientConfig.entry = [clientConfig.entry]
   // clientConfig.output.filename = '[name].js'
-  // clientConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin())
   const clientCompiler = webpack(clientConfig)
   koaWebpack({
     compiler: clientCompiler,
     devMiddleware: {
       publicPath: clientConfig.output.publicPath,
       index: false,
-      stats: 'none',
+      // stats: 'minimal',
+      logLevel: 'silent',
     },
     hotClient: {
       logLevel: 'warn',

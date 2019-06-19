@@ -9,8 +9,8 @@ const clientCompiler = webpack(clientConfig)
 clientCompiler.run((err, stats) => {
   if (err) console.log(err)
   stats = stats.toJson('minimal')
-  stats.errors.forEach(err => console.error(err))
-  stats.warnings.forEach(err => console.warn(err))
+  // stats.errors.forEach(err => console.error(err))
+  // stats.warnings.forEach(err => console.warn(err))
   if (stats.errors.length) return
   // console.log('client', stats)
   console.log('client assets is builded.')
@@ -22,8 +22,8 @@ const serverCompiler = webpack(serverConfig)
 serverCompiler.run((err, stats) => {
   if (err) console.log(err)
   stats = stats.toJson('minimal')
-  stats.errors.forEach(err => console.error(err))
-  stats.warnings.forEach(err => console.warn(err))
+  // stats.errors.forEach(err => console.error(err))
+  // stats.warnings.forEach(err => console.warn(err))
   if (stats.errors.length) return
   // console.log('server', stats)
   console.log('server bundle is builded.')

@@ -100,6 +100,17 @@ const config = merge(baseConfig, {
   module: {
     rules: [
       {
+        test: /\.(vue|js)$/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            formatter: require('eslint-formatter-friendly'),
+          },
+        },
+        exclude: /node_modules/,
+        enforce: 'pre',
+      },
+      {
         test: /\.css$/,
         oneOf: cssLoaderMerge(),
       },
