@@ -45,17 +45,13 @@ module.exports = {
       },
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1024,
-              fallback: 'file-loader',
-              outputPath: 'img/',
-              name: '[name].[ext]?[hash:8]',
-            },
-          },
-        ],
+        loader: 'url-loader',
+        options: {
+          limit: 1024,
+          fallback: 'file-loader',
+          outputPath: 'img/',
+          name: '[name].[ext]?[hash:8]',
+        },
       },
     ],
   },

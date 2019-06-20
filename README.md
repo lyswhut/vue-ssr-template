@@ -26,6 +26,9 @@ npm run dev
 # production build
 npm run build
 
+# production mode
+npm start
+
 # eslint check
 npm run lint
 

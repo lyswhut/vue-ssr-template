@@ -28,7 +28,7 @@ module.exports = isDev => {
     },
     categories: {
       default: { appenders: ['app', 'errors', 'console'], level: 'DEBUG' },
-      http: { appenders: isDev ? ['access'] : ['network', 'access'], level: 'ALL' },
+      http: { appenders: ['access'], level: 'ALL' },
     },
   }
 }

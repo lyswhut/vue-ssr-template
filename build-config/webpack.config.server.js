@@ -60,8 +60,8 @@ function cssLoaderMerge(beforeLoader) {
 
 module.exports = merge(baseConfig, {
   target: 'node',
-  entry: path.join(__dirname, '../client/entry-server.js'),
   devtool: false,
+  entry: path.join(__dirname, '../client/entry-server.js'),
   output: {
     libraryTarget: 'commonjs2',
     filename: 'server-entry.js',

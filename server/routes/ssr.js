@@ -34,10 +34,6 @@ const isCacheable = ctx => {
 router.get('*', async(ctx, next) => {
   ctx.set('Server', serverInfo)
 
-  if (global.mb_siteInfo.time && (Date.now() - global.mb_siteInfo.time > 10000)) {
-    await global.mb_fn.loadSiteInfo()
-  }
-
   const cacheable = isCacheable(ctx)
   if (cacheable) {
     const hit = microCache.get(ctx.path)

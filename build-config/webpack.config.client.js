@@ -101,11 +101,9 @@ const config = merge(baseConfig, {
     rules: [
       {
         test: /\.(vue|js)$/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: require('eslint-formatter-friendly'),
-          },
+        loader: 'eslint-loader',
+        options: {
+          formatter: require('eslint-formatter-friendly'),
         },
         exclude: /node_modules/,
         enforce: 'pre',
@@ -136,10 +134,10 @@ const config = merge(baseConfig, {
   },
 })
 module.exports = isDev ? merge(config, {
+  devtool: '#cheap-module-eval-source-map',
   output: {
     filename: 'bundle.[hash:8].js',
   },
-  devtool: '#cheap-module-eval-source-map',
   plugins: defaultPlugins,
 }) : merge(config, {
   output: {
