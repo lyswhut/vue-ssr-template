@@ -15,7 +15,7 @@ export default {
   metaInfo() {
     return {
       title: 'app',
-      titleTemplate: `%s - demo`,
+      titleTemplate: '%s - demo',
     }
   },
 }
