@@ -23,12 +23,8 @@ module.exports = app => {
       inject: false,
       clientManifest,
     })
-    try {
-      const html = await serverRender(context, renderer, template)
-      return html
-    } catch (err) {
-      throw err
-      // console.log(err)
-    }
+
+    const html = await serverRender(context, renderer, template)
+    return html
   }
 }
