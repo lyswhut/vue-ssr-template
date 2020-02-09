@@ -41,6 +41,7 @@ module.exports = {
         options: {
           publicPath,
           name: '[name].[ext]?[hash:8]',
+          esModule: false,
         },
       },
       {
@@ -51,6 +52,7 @@ module.exports = {
           fallback: 'file-loader',
           outputPath: 'img/',
           name: '[name].[ext]?[hash:8]',
+          esModule: false,
         },
       },
     ],
