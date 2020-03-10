@@ -12,4 +12,9 @@ export default [
     name: 'home',
     view: 'Home',
   },
+  {
+    path: '/about',
+    name: 'about',
+    view: 'About',
+  },
 ]

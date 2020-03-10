@@ -1,5 +1,6 @@
 <template lang="pug">
   .container
+    core-header
     h1 hello
     router-view
 </template>
