@@ -22,7 +22,7 @@ const handleError = (ctx, next, err) => {
 
 module.exports = app => {
   const handleSSR = require('../render/dev-ssr')(app)
-  router.get('*', async(ctx, next) => {
+  router.get('(.*)', async(ctx, next) => {
     await next()
     if (ctx.body) return
 

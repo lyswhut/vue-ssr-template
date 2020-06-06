@@ -31,7 +31,7 @@ const isCacheable = ctx => {
   return false
 }
 
-router.get('*', async(ctx, next) => {
+router.get('(.*)', async(ctx, next) => {
   ctx.set('Server', serverInfo)
 
   const cacheable = isCacheable(ctx)
