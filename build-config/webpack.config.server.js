@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./webpack.config.base')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
@@ -67,7 +67,7 @@ module.exports = merge(baseConfig, {
     filename: 'server-entry.js',
   },
   externals: [nodeExternals({ // in order to ignore all modules in node_modules folder
-    whitelist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
+    allowlist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
   })],
   resolve: {
     alias: {
