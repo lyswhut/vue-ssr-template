@@ -100,6 +100,11 @@ const config = merge(baseConfig, {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(vue|js)$/,
         loader: 'eslint-loader',
         options: {
