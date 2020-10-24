@@ -7,8 +7,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
-const cssLoaderConfig = require('./css-loader.config')
-
 const isDev = process.env.NODE_ENV === 'development'
 const isProdTest = process.env.RUN_MODE === 'test'
 
@@ -22,73 +20,6 @@ const defaultPlugins = [
   new VueSSRClientPlugin(),
 ]
 
-function cssLoaderMerge(beforeLoader) {
-  const loader = isDev ? [
-    // 这里匹配 `<style module>`
-    {
-      resourceQuery: /module/,
-      use: [
-        'vue-style-loader',
-        {
-          loader: 'css-loader',
-          options: Object.assign({
-            sourceMap: true,
-          }, cssLoaderConfig),
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-      ],
-    },
-    // 这里匹配普通的 `<style>` 或 `<style scoped>`
-    {
-      use: [
-        'vue-style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-      ],
-    },
-  ] : [
-    // 这里匹配 `<style module>`
-    {
-      resourceQuery: /module/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader',
-          options: cssLoaderConfig,
-        },
-        'postcss-loader',
-      ],
-    },
-    // 这里匹配普通的 `<style>` 或 `<style scoped>`
-    {
-      use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'postcss-loader',
-      ],
-    },
-  ]
-  if (beforeLoader) {
-    loader[0].use.push(beforeLoader)
-    loader[1].use.push(beforeLoader)
-  }
-  return loader
-}
 const config = merge(baseConfig, {
   target: 'web',
   entry: path.join(__dirname, '../client/entry-client.js'),
@@ -112,28 +43,6 @@ const config = merge(baseConfig, {
         },
         exclude: /node_modules/,
         enforce: 'pre',
-      },
-      {
-        test: /\.css$/,
-        oneOf: cssLoaderMerge(),
-      },
-      {
-        test: /\.less$/,
-        oneOf: cssLoaderMerge({
-          loader: 'less-loader',
-          options: {
-            sourceMap: true,
-          },
-        }),
-      },
-      {
-        test: /\.stylus$/,
-        oneOf: cssLoaderMerge({
-          loader: 'stylus-loader',
-          options: {
-            sourceMap: true,
-          },
-        }),
       },
     ],
   },
