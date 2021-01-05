@@ -91,7 +91,7 @@
     "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-compress": "^5.0.1",
