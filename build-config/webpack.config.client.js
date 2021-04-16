@@ -48,7 +48,7 @@ const config = merge(baseConfig, {
   },
 })
 module.exports = isDev ? merge(config, {
-  devtool: '#cheap-module-eval-source-map',
+  devtool: 'cheap-source-map',
   output: {
     filename: 'bundle.[hash:8].js',
   },
