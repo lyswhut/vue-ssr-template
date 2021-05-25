@@ -51,7 +51,7 @@
     "autoprefixer": "^10.2.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "browserslist": "^4.16.4",
+    "browserslist": "^4.16.5",
     "chokidar": "^3.5.1",
     "core-js": "^3.10.1",
     "cross-env": "^7.0.3",
