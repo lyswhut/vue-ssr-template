@@ -47,59 +47,57 @@ const config = merge(baseConfig, {
     ],
   },
 })
-module.exports = isDev ? merge(config, {
-  devtool: 'cheap-source-map',
-  output: {
-    filename: 'bundle.[hash:8].js',
-  },
-  plugins: defaultPlugins,
-}) : merge(config, {
-  output: {
-    filename: '[name].[chunkhash:8].js',
-  },
-  devtool: false,
-  plugins: defaultPlugins.concat([
-    new MiniCssExtractPlugin({
-      filename: '[name].[contentHash:8].css',
-      chunkFilename: '[id].[contentHash:8].css',
-    }),
-    new webpack.NamedChunksPlugin(),
-  ]),
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false, // set to true if you want JS source maps
+module.exports = isDev
+  ? merge(config, {
+    devtool: 'cheap-source-map',
+    output: {
+      filename: 'bundle.[hash:8].js',
+    },
+    plugins: defaultPlugins,
+  })
+  : merge(config, {
+    output: {
+      filename: '[name].[chunkhash:8].js',
+    },
+    devtool: false,
+    plugins: defaultPlugins.concat([
+      new MiniCssExtractPlugin({
+        filename: '[name].[contentHash:8].css',
+        chunkFilename: '[id].[contentHash:8].css',
       }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-    splitChunks: {
-      cacheGroups: {
+      new webpack.NamedChunksPlugin(),
+    ]),
+    optimization: {
+      minimizer: [
+        new TerserPlugin(),
+        new OptimizeCSSAssetsPlugin({}),
+      ],
+      splitChunks: {
+        cacheGroups: {
         // chunks: 'all',
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          enforce: true,
-          chunks: 'initial',
-        },
-        // styles: {
-        //   name: 'styles',
-        //   test: /\.css$/,
-        //   chunks: 'all',
-        //   enforce: true
-        // }
-        styles: {
-          name: 'styles',
-          test: /\.(css|less)$/,
-          chunks: 'all',
-          enforce: true,
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            enforce: true,
+            chunks: 'initial',
+          },
+          // styles: {
+          //   name: 'styles',
+          //   test: /\.css$/,
+          //   chunks: 'all',
+          //   enforce: true
+          // }
+          styles: {
+            name: 'styles',
+            test: /\.(css|less)$/,
+            chunks: 'all',
+            enforce: true,
+          },
         },
       },
+      runtimeChunk: true,
     },
-    runtimeChunk: true,
-  },
-  performance: {
-    hints: 'warning',
-  },
-})
+    performance: {
+      hints: 'warning',
+    },
+  })

@@ -6,6 +6,14 @@
         "corejs": "3",
         "useBuiltIns": "usage"
       }
+    ],
+    [
+      "minify",
+      {
+        "builtIns": false,
+        "evaluate": false,
+        "mangle": false
+      }
     ]
   ],
   "plugins": [

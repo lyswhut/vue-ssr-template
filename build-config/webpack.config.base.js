@@ -13,7 +13,8 @@ const publicPath = isDev ? '/' : '/public/'
 
 const cssLoaderConfig = require('./css-loader.config')
 
-function cssLoaderMerge(beforeLoader) {
+// merge css-loader
+const cssLoaderMerge = beforeLoader => {
   const loader = [
     // 这里匹配 `<style module>`
     {
@@ -22,7 +23,7 @@ function cssLoaderMerge(beforeLoader) {
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
-            hmr: isDev,
+            esModule: false,
           },
         },
         {
@@ -38,7 +39,7 @@ function cssLoaderMerge(beforeLoader) {
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
-            hmr: isDev,
+            esModule: false,
           },
         },
         'css-loader',

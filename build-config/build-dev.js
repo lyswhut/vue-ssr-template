@@ -20,7 +20,7 @@ module.exports = (app, templatePath, cb) => {
   let bundle, clientManifest, template
   const bundlePath = path.join(
     serverConfig.output.path,
-    'vue-ssr-server-bundle.json'
+    'vue-ssr-server-bundle.json',
   )
 
   const update = () => {
@@ -29,7 +29,7 @@ module.exports = (app, templatePath, cb) => {
     }
   }
   const updateTemplate = (count = 0) => {
-    let data = fs.readFileSync(templatePath, 'utf-8')
+    const data = fs.readFileSync(templatePath, 'utf-8')
     if (data === '') {
       if (count > 20) return console.log('read template fail')
       return updateTemplate(++count)
@@ -66,7 +66,7 @@ module.exports = (app, templatePath, cb) => {
       if (stats.errors.length) return
       clientManifest = JSON.parse(readFile(
         middleware.devMiddleware.fileSystem,
-        'vue-ssr-client-manifest.json'
+        'vue-ssr-client-manifest.json',
       ))
       update()
       console.log('new manifest generated.')
