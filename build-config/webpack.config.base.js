@@ -62,6 +62,9 @@ module.exports = {
     publicPath,
   },
   resolve: {
+    alias: {
+      '@': path.join(__dirname, '../src'),
+    },
     extensions: ['*', '.js', '.vue', '.json'],
   },
   module: {
