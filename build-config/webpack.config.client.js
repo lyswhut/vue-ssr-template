@@ -35,15 +35,6 @@ const config = merge(baseConfig, {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
-      {
-        test: /\.(vue|js)$/,
-        loader: 'eslint-loader',
-        options: {
-          formatter: require('eslint-formatter-friendly'),
-        },
-        exclude: /node_modules/,
-        enforce: 'pre',
-      },
     ],
   },
 })
