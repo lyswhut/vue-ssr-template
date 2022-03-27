@@ -14,5 +14,6 @@ module.exports = {
     'stylus',
     'stylus-loader',
     'terser-webpack-plugin',
+    /^vue/,
   ]
 }
